@@ -6,13 +6,16 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <cmath>
+#include <QtWidgets>
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 private:
-    SpeedMeter *speedMeter;
+    SpeedMeter *speed_meter;
+
+    QWidget *main_widget;
 
 public:
     MainWindow(QWidget *parent = nullptr);

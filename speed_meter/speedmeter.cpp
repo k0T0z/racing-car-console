@@ -162,7 +162,7 @@ void SpeedMeter::draw_speed_arc(QPainter *painter, QPen *pen, QBrush *brush, QRe
     delete static_speed_font;
 }
 
-void SpeedMeter::draw_fuel_arc(QPainter *painter, QRectF *rectF, QPen *pen, QBrush *brush,qreal current_angle,qreal fuelProgressArcViewMaxRadius, qreal fuelProgressArcViewStartAngle, qreal fuelProgressArcLength,qreal fuelProgressChildArcLength) {
+void SpeedMeter::draw_fuel_arc(QPainter *painter, QRectF *rectF, QPen *pen, QBrush *brush,qreal current_angle,qreal fuel_progress_arc_view_max_radius, qreal fuel_progress_arc_view_start_angle, qreal fuel_progress_arc_length ,qreal fuel_progress_child_arc_length) {
     QPointF center { painter->window().center()};
 
     qreal width {static_cast<qreal>(painter->window().width())};
@@ -174,29 +174,29 @@ void SpeedMeter::draw_fuel_arc(QPainter *painter, QRectF *rectF, QPen *pen, QBru
     brush->setColor(Qt::transparent);
     painter->setBrush(*brush);
 
-    painter->drawArc(*rectF, fuelProgressArcViewStartAngle * 16, (fuelProgressArcLength) * 16);
+    painter->drawArc(*rectF, fuel_progress_arc_view_start_angle * 16, (fuel_progress_arc_length ) * 16);
 
     for (int i = 0; i < 3; i++) {
 
           painter->drawLine(QPointF(
                                 center.x() +
-                                    (fuelProgressArcViewMaxRadius) * cos(qDegreesToRadians(-1 * current_angle)),
+                                    (fuel_progress_arc_view_max_radius) * cos(qDegreesToRadians(-1 * current_angle)),
                                 center.y() +
-                                    (fuelProgressArcViewMaxRadius) * sin(qDegreesToRadians(-1 * current_angle))),
+                                    (fuel_progress_arc_view_max_radius) * sin(qDegreesToRadians(-1 * current_angle))),
 
                             QPointF(
                                 center.x() +
-                                    (fuelProgressArcViewMaxRadius -
+                                    (fuel_progress_arc_view_max_radius -
                                            fmin(width, height) * 0.05) *
                                         cos(qDegreesToRadians(-1 * current_angle)),
                                 center.y() +
-                                    (fuelProgressArcViewMaxRadius -
+                                    (fuel_progress_arc_view_max_radius -
                                            fmin(width, height) * 0.05) *
                                         sin(qDegreesToRadians(-1 * current_angle))));
 
 
 
-          current_angle += fuelProgressChildArcLength;
+          current_angle += fuel_progress_child_arc_length;
         }
 
 }
