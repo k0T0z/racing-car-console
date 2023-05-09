@@ -21,6 +21,7 @@ set(PROJECT_SOURCES
 )
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/speed_meter)
+add_subdirectory(${CMAKE_SOURCE_DIR}/rpm_meter)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(racingcarconsole
@@ -45,7 +46,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(racingcarconsole PRIVATE Qt${QT_VERSION_MAJOR}::Widgets speedmeterlib)
+target_link_libraries(racingcarconsole PRIVATE Qt${QT_VERSION_MAJOR}::Widgets speedmeterlib rpmmeterlib)
 
 set_target_properties(racingcarconsole PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

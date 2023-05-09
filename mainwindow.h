@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "speed_meter/speedmeter.h"
+#include "rpm_meter/rpmmeter.h"
 #include <iostream>
 #include <QMainWindow>
 #include <QPainter>
@@ -14,6 +15,7 @@ class MainWindow : public QMainWindow
 
 private:
     SpeedMeter *speed_meter;
+    RPMMeter *rpm_meter;
 
     QWidget *main_widget;
 

@@ -1,15 +1,14 @@
-#include "speedmeter.h"
+#include "rpmmeter.h"
 
-SpeedMeter::SpeedMeter(QWidget *parent)
-    : QWidget(parent) {
-
+RPMMeter::RPMMeter(QWidget *parent)
+    : QWidget{parent}
+{
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+}
 
-};
+RPMMeter::~RPMMeter() {};
 
-SpeedMeter::~SpeedMeter() {};
-
-void SpeedMeter::paintEvent(QPaintEvent *event)
+void RPMMeter::paintEvent(QPaintEvent *event)
 {
     qreal speed_value {0.6};
     qreal fuel_value {0.6};
@@ -101,7 +100,7 @@ void SpeedMeter::paintEvent(QPaintEvent *event)
     delete painter;
 }
 
-void SpeedMeter::draw_speed_arc(QPainter *painter, QPen *pen, QBrush *brush, QRectF *rectF, qreal current_angle, qreal speed_progress_child_arc_length, qreal speed_progress_child_split_length, qreal speed_progress_arc_view_max_radius) {
+void RPMMeter::draw_speed_arc(QPainter *painter, QPen *pen, QBrush *brush, QRectF *rectF, qreal current_angle, qreal speed_progress_child_arc_length, qreal speed_progress_child_split_length, qreal speed_progress_arc_view_max_radius) {
     QPointF center {painter->window().center()};
 
     qreal width {static_cast<qreal>(painter->window().width())};
@@ -167,7 +166,7 @@ void SpeedMeter::draw_speed_arc(QPainter *painter, QPen *pen, QBrush *brush, QRe
     delete static_speed_font;
 }
 
-void SpeedMeter::draw_fuel_arc(QPainter *painter, QRectF *rectF, QPen *pen, QBrush *brush,qreal current_angle,qreal fuel_progress_arc_view_max_radius, qreal fuel_progress_arc_view_start_angle, qreal fuel_progress_arc_length ,qreal fuel_progress_child_arc_length) {
+void RPMMeter::draw_fuel_arc(QPainter *painter, QRectF *rectF, QPen *pen, QBrush *brush,qreal current_angle,qreal fuel_progress_arc_view_max_radius, qreal fuel_progress_arc_view_start_angle, qreal fuel_progress_arc_length ,qreal fuel_progress_child_arc_length) {
     QPointF center { painter->window().center()};
 
     qreal width {static_cast<qreal>(painter->window().width())};
@@ -206,7 +205,7 @@ void SpeedMeter::draw_fuel_arc(QPainter *painter, QRectF *rectF, QPen *pen, QBru
 
 }
 
-void SpeedMeter::draw_dynamic_speed_text(QPainter *painter, QPen *pen, QBrush *brush, qreal value) {
+void RPMMeter::draw_dynamic_speed_text(QPainter *painter, QPen *pen, QBrush *brush, qreal value) {
     QPointF speed_text_center { painter->window().center()};
 
     qreal width {static_cast<qreal>(painter->window().width())};
@@ -235,7 +234,7 @@ void SpeedMeter::draw_dynamic_speed_text(QPainter *painter, QPen *pen, QBrush *b
     delete dynamic_speed_font;
 }
 
-void SpeedMeter::draw_dynamic_speed_measurement_unit_text(QPainter *painter, QPen *pen, QBrush *brush) {
+void RPMMeter::draw_dynamic_speed_measurement_unit_text(QPainter *painter, QPen *pen, QBrush *brush) {
     QPointF speed_text_center { painter->window().center()};
 
     qreal width {static_cast<qreal>(painter->window().width())};
@@ -263,4 +262,3 @@ void SpeedMeter::draw_dynamic_speed_measurement_unit_text(QPainter *painter, QPe
     delete fontMetrics;
     delete dynamic_speed_measurement_unit_font;
 }
-
